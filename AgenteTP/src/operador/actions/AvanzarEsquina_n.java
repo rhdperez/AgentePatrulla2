@@ -23,7 +23,7 @@ public class AvanzarEsquina_n extends SearchAction {
         System.out.println ("El precio es deeuros");
         System.out.println ("El precio es de ");
         System.out.println ("este seria mi ultimo comit 15:51 hs");
-        
+        System.out.println ("este desde el primereclipse");
         return null;
     }
 
