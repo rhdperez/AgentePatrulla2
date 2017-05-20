@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idemia:AgentModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:idemia="utn.frsf.cidisi">
+  <Environment name="Mapa">
+    <EnvironmentState name="EstadoAmbiente">
+      <DataStructure name="EsquinaIntersecciones" type="Other"/>
+      <DataStructure name="PosIncidente" type="Other"/>
+      <DataStructure name="PosPatrullero" type="Other"/>
+      <DataStructure name="CortesParciales" type="Other"/>
+      <DataStructure name="DestPosibles"/>
+    </EnvironmentState>
+  </Environment>
+  <Agent name="Patrullero">
+    <Strategy xsi:type="idemia:Search"/>
+    <Goal name="ObjetivoAgente" value="PosPatrullero=PosIncidente"/>
+    <AgentState name="EstadoAgente">
+      <DataStructure name="PosPatrullero" type="Other"/>
+      <DataStructure name="EsquinaIntersecciones" type="Other"/>
+      <DataStructure name="GrafoCamino" type="Other"/>
+      <DataStructure name="DestPosibles" type="Other"/>
+      <DataStructure name="CortesParciales" type="Other"/>
+      <DataStructure name="EsquinasRecorridas"/>
+    </AgentState>
+  </Agent>
+  <Actions execute_by="//@Agent" executed_on="//@Environment" name="AvanzarEsquina_n"/>
+  <Perceptions perceived_on="//@Environment" perceived_by="//@Agent" name="accidente"/>
+  <Perceptions perceived_on="//@Environment" perceived_by="//@Agent" name="cortedecalle"/>
+  <Perceptions perceived_on="//@Environment" perceived_by="//@Agent" name="congestion"/>
+  <Perceptions perceived_on="//@Environment" perceived_by="//@Agent" name="eventosocial"/>
+  <Perceptions perceived_on="//@Environment" perceived_by="//@Agent" name="plandebacheo"/>
+</idemia:AgentModel>
