@@ -20,10 +20,9 @@ public class AvanzarEsquina_n extends SearchAction {
         // TODO: Use this conditions
         // PreConditions: null
         // PostConditions: null
-        System.out.println ("El precio es deeuros");
-        System.out.println ("El precio es de ");
-        System.out.println ("este seria mi ultimo comit 15:51 hs");
-        System.out.println ("este desde el primereclipse");
+               
+        System.out.println ("uuuultimo asdada adads reciencito");
+
         return null;
     }
 
