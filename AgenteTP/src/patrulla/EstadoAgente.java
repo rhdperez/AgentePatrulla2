@@ -20,14 +20,14 @@ public class EstadoAgente extends SearchBasedAgentState {
     public EstadoAgente() {
     
     	//TODO: Complete Method
-    	/*
-			// PosPatrullero = initData0;
+    	
+			 PosPatrullero = initData0;
 			// EsquinaIntersecciones = initData1;
 			// GrafoCamino = initData2;
 			// DestPosibles = initData3;
 			// CortesParciales = initData4;
 			// EsquinasRecorridas = initData5;
-        */
+        
         this.initState();
     }
 
@@ -60,6 +60,7 @@ public class EstadoAgente extends SearchBasedAgentState {
     public void initState() {
         
 	//TODO: Complete Method
+    	PosPatrullero="aca debe ir la posicion inicial del patrullero";
 
     }
 
@@ -84,7 +85,10 @@ public class EstadoAgente extends SearchBasedAgentState {
        
        //TODO: Complete Method
         
-        return true;
+    	if (!(obj instanceof EstadoAgente)) {
+            return false;
+        }
+        return posPatrullero.equals(((EstadoAgente) obj).getPosPatrullero());
     }
 
     //TODO: Complete this section with agent-specific methods
@@ -93,9 +97,9 @@ public class EstadoAgente extends SearchBasedAgentState {
 //     public Other getPosPatrullero(){
 //        return PosPatrullero;
 //     }
-//     public void setPosPatrullero(Other arg){
-//        PosPatrullero = arg;
-//     }
+    public void setPosPatrullero(Other arg){
+        PosPatrullero = arg;
+     }
 //     public Other getEsquinaIntersecciones(){
 //        return EsquinaIntersecciones;
 //     }

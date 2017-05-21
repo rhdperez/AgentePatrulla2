@@ -8,11 +8,10 @@ public class ObjetivoAgente extends GoalTest {
     @Override
     public boolean isGoalState (AgentState agentState) {
     
-    	// TODO: Complete Method
-        if  (true) //(PosPatrullero=PosIncidente)
-        	{
-            return true;
-        	}
-        return false;
-	}
+        if  (((EstadoAgente) agentState).getPosPatrullero().equals(RobotAgentState."ACA DEBE IR EL ESTADO FINAL DEL AGENTE PARA PODER COMPARAR")) //(PosPatrullero=PosIncidente)
+    	{
+        return true;
+    	}
+    return false;
+}
 }
