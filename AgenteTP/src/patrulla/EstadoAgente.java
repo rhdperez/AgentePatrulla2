@@ -1,5 +1,6 @@
 package patrulla;
 
+import pruebaMatriz.leerDestinos;
 import frsf.cidisi.faia.agent.Perception;
 import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
 
@@ -15,27 +16,32 @@ public class EstadoAgente extends SearchBasedAgentState {
     //private Other DestPosibles;
     //private Other CortesParciales;
     private int EsquinasRecorridas;
+    private int PosPatrullero;
+    private int PosObjetivo;
 	
 
     public EstadoAgente() {
     
     	//TODO: Complete Method
     	
-			 PosPatrullero = initData0;
+			 //PosPatrullero = initData0;
 			// EsquinaIntersecciones = initData1;
 			// GrafoCamino = initData2;
 			// DestPosibles = initData3;
 			// CortesParciales = initData4;
 			// EsquinasRecorridas = initData5;
+			 
         
         this.initState();
     }
 
-    /**
+    
+
+	/**
      * This method clones the state of the agent. It's used in the search
      * process, when creating the search tree.
      */
-    @Override
+    //@Override
     public SearchBasedAgentState clone() {
         
 		//TODO: Complete Method
@@ -47,7 +53,7 @@ public class EstadoAgente extends SearchBasedAgentState {
      * This method is used to update the Agent State when a Perception is
      * received by the Simulator.
      */
-    @Override
+    //@Override
     public void updateState(Perception p) {
         
         //TODO: Complete Method
@@ -56,18 +62,28 @@ public class EstadoAgente extends SearchBasedAgentState {
     /**
      * This method is optional, and sets the initial state of the agent.
      */
-    @Override
+    //@Override
     public void initState() {
-        
+    
+    //Matriz destinos
+    String matriz[][]= new String[173][173];	
+    matriz = leerDestinos.getMatriz();
+    
+    //Pos Objetivo esquina 173
+    PosObjetivo = 173;
+    
+    //Esquina Intersecciones ACA
+    	
 	//TODO: Complete Method
-    	PosPatrullero="aca debe ir la posicion inicial del patrullero";
+    //Pos inicial del patrullero
+    PosPatrullero= 1;
 
     }
 
     /**
      * This method returns the String representation of the agent state.
      */
-    @Override
+    //@Override
     public String toString() {
         String str = "";
 
@@ -80,7 +96,7 @@ public class EstadoAgente extends SearchBasedAgentState {
      * This method is used in the search process to verify if the node already
      * exists in the actual search.
      */
-    @Override
+    //@Override
     public boolean equals(Object obj) {
        
        //TODO: Complete Method
@@ -88,7 +104,8 @@ public class EstadoAgente extends SearchBasedAgentState {
     	if (!(obj instanceof EstadoAgente)) {
             return false;
         }
-        return posPatrullero.equals(((EstadoAgente) obj).getPosPatrullero());
+    	return true;
+       //return posPatrullero.equals(((EstadoAgente) obj).getPosPatrullero());
     }
 
     //TODO: Complete this section with agent-specific methods
@@ -97,7 +114,7 @@ public class EstadoAgente extends SearchBasedAgentState {
 //     public Other getPosPatrullero(){
 //        return PosPatrullero;
 //     }
-    public void setPosPatrullero(Other arg){
+    public void setPosPatrullero(int arg){
         PosPatrullero = arg;
      }
 //     public Other getEsquinaIntersecciones(){

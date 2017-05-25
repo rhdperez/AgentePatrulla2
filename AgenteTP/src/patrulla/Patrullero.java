@@ -20,23 +20,39 @@ public class Patrullero extends SearchBasedAgent {
         // The Agent Goal
         ObjetivoAgente agGoal = new ObjetivoAgente();
 
-        // The Agent State
+        // The Agent State....POSICION INICIAL DEL AGENTE EN LA ESQUINA 2
         EstadoAgente agState = new EstadoAgente();
         this.setAgentState(agState);
 
         // Create the operators
         Vector<SearchAction> operators = new Vector<SearchAction>();
-        operators.addElement(new AvanzarEsquina_n());	
-
+        
+        
+        operators = inicializarOperadores();
+        
+        
         // Create the Problem which the agent will resolve
         Problem problem = new Problem(agGoal, agState, operators);
         this.setProblem(problem);
     }
 
-    /**
+    private Vector inicializarOperadores()
+    {
+    	Vector<SearchAction> operador = new Vector<SearchAction>();
+    	for(int i = 1;i<=173;i++)
+    {
+    		operador.addElement(new AvanzarEsquina_n(i));
+    	}
+    	
+    	
+    	
+		return operador;
+	}
+
+	/**
      * This method is executed by the simulator to ask the agent for an action.
      */
-    @Override
+    //@Override
     public Action selectAction() {
 
         // Create the search strategy
@@ -71,7 +87,7 @@ public class Patrullero extends SearchBasedAgent {
      * Then it updates its state.
      * @param p
      */
-    @Override
+    //@Override
     public void see(Perception p) {
         this.getAgentState().updateState(p);
     }

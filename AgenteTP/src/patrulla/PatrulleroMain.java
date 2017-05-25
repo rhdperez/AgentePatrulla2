@@ -10,12 +10,7 @@ public class PatrulleroMain {
 
         Mapa environment = new Mapa();
         
-        //aca van cambios nuevos
-        System.out.println ("El precio es de ");
-        System.out.println ("El precio es de patacones");
-        System.out.println ("comit 15:52hs");
-
-        SearchBasedAgentSimulator simulator =
+       SearchBasedAgentSimulator simulator =
                 new SearchBasedAgentSimulator(environment, agent);
         
         simulator.start();
