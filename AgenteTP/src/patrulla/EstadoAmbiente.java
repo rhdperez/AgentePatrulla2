@@ -1,5 +1,6 @@
 package patrulla;
 
+import pruebaMatriz.leerDestinos;
 import frsf.cidisi.faia.state.EnvironmentState;
 
 /**
@@ -13,8 +14,35 @@ public class EstadoAmbiente extends EnvironmentState {
     //private Other PosPatrullero;
     //private Other CortesParciales;
     private int DestPosibles;
+    private int PosPatrullero;
+    private int PosObjetivo;
+    private String [][] matriz;
 	
-    public EstadoAmbiente() {
+    public int getPosPatrullero() {
+		return PosPatrullero;
+	}
+
+	public void setPosPatrullero(int posPatrullero) {
+		PosPatrullero = posPatrullero;
+	}
+
+	public int getPosObjetivo() {
+		return PosObjetivo;
+	}
+
+	public void setPosObjetivo(int posObjetivo) {
+		PosObjetivo = posObjetivo;
+	}
+
+	public String[][] getMatriz() {
+		return matriz;
+	}
+
+	public void setMatriz(String[][] matriz) {
+		this.matriz = matriz;
+	}
+
+	public EstadoAmbiente() {
         
         //TODO: Complete Method
     	/*
@@ -33,7 +61,20 @@ public class EstadoAmbiente extends EnvironmentState {
     @Override
     public void initState() {
 
-        //TODO: Complete Method
+    	 //Matriz destinos
+        matriz= new String[173][173];	
+        matriz = leerDestinos.getMatriz("C:/Users/RHDP/Desktop/matriz_pablo/matrizDestinosAmbiente.txt");
+        
+        //Pos Objetivo esquina 173
+        PosObjetivo = 173;
+        
+        //Esquina Intersecciones ACA
+        	
+    	//TODO: Complete Method
+        //Pos inicial del patrullero
+        PosPatrullero= 1;
+
+        
     }
 
     /**

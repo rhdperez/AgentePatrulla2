@@ -5,13 +5,14 @@ import frsf.cidisi.faia.state.AgentState;
 
 public class ObjetivoAgente extends GoalTest {
 
-    @Override
+    
     public boolean isGoalState (AgentState agentState) {
     
-        if  (((EstadoAgente) agentState).getPosPatrullero().equals(RobotAgentState."ACA DEBE IR EL ESTADO FINAL DEL AGENTE PARA PODER COMPARAR")) //(PosPatrullero=PosIncidente)
-    	{
-        return true;
-    	}
+    	int posPatrullero = ((EstadoAgente) agentState).getPosPatrullero();
+    	int posObjetivo = ((EstadoAgente) agentState).getPosObjetivo();
+        if  (posPatrullero == posObjetivo)
+        	return true;
+    	
     return false;
-}
+    }
 }

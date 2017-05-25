@@ -3,8 +3,11 @@ package patrulla;
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.environment.Environment;
 
+
+
 public class Mapa extends Environment {
 
+	
     public Mapa() {
         // Create the environment state
         this.environmentState = new EstadoAmbiente();
@@ -25,9 +28,7 @@ public class Mapa extends Environment {
     public  PatrulleroPerception getPercept() {
         // Create a new perception to return
          PatrulleroPerception perception = new PatrulleroPerception();
-		
-		//TODO : Set the perceptions sensors
-        
+		int PosPatrullero =	this.getEnvironmentState().getPosPatrullero();
         // Return the perception
         return perception;
     }

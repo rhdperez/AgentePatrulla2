@@ -9,6 +9,15 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
  */
 public class EstadoAgente extends SearchBasedAgentState {
 	
+	public int getPosObjetivo() {
+		return PosObjetivo;
+	}
+
+
+
+	public void setPosObjetivo(int posObjetivo) {
+		PosObjetivo = posObjetivo;
+	}
 	//TODO: Setup Variables
     //private Other PosPatrullero;
     //private Other EsquinaIntersecciones;
@@ -18,6 +27,7 @@ public class EstadoAgente extends SearchBasedAgentState {
     private int EsquinasRecorridas;
     private int PosPatrullero;
     private int PosObjetivo;
+    private String [][] matriz;
 	
 
     public EstadoAgente() {
@@ -66,8 +76,8 @@ public class EstadoAgente extends SearchBasedAgentState {
     public void initState() {
     
     //Matriz destinos
-    String matriz[][]= new String[173][173];	
-    matriz = leerDestinos.getMatriz();
+    matriz= new String[173][173];	
+    matriz = leerDestinos.getMatriz("C:/Users/RHDP/Desktop/matriz_pablo/matrizDestinosAgente.txt");
     
     //Pos Objetivo esquina 173
     PosObjetivo = 173;
@@ -80,7 +90,19 @@ public class EstadoAgente extends SearchBasedAgentState {
 
     }
 
-    /**
+    public String[][] getMatriz() {
+		return matriz;
+	}
+
+
+
+	public void setMatriz(String[][] matriz) {
+		this.matriz = matriz;
+	}
+
+
+
+	/**
      * This method returns the String representation of the agent state.
      */
     //@Override
@@ -111,9 +133,9 @@ public class EstadoAgente extends SearchBasedAgentState {
     //TODO: Complete this section with agent-specific methods
     // The following methods are agent-specific:
    	
-//     public Other getPosPatrullero(){
-//        return PosPatrullero;
-//     }
+     public int getPosPatrullero(){
+        return PosPatrullero;
+     }
     public void setPosPatrullero(int arg){
         PosPatrullero = arg;
      }

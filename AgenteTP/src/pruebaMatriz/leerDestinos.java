@@ -4,7 +4,7 @@ import java.io.*;
 
 public class leerDestinos {
 	
-	public static String [][]getMatriz(){
+	public static String [][]getMatriz(String ruta){
 	
 //	public static void main(String[] args) {
 			File archivo=null;
@@ -12,7 +12,7 @@ public class leerDestinos {
 			BufferedReader br=null;
 			String matriz[][]= new String[173][173];
 	try {
-		archivo = new File ("C:/Users/RHDP/Desktop/matriz_pablo/matrizDestinos.txt");
+		archivo = new File (ruta);
 		fr = new FileReader (archivo);
 		br = new BufferedReader(fr);
 	
