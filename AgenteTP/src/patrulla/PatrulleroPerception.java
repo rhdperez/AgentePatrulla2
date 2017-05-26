@@ -1,4 +1,6 @@
 package patrulla;
+//MODIFICADO 26/05
+import java.util.Vector;
 
 import frsf.cidisi.faia.agent.Agent;
 import frsf.cidisi.faia.agent.Perception;
@@ -10,6 +12,11 @@ public class PatrulleroPerception extends Perception {
     //public static int UNKNOWN_PERCEPTION = -1;   
 	
 	
+	//matriz utilizada para devolver que hay en las esquinas donde puede ir como mucho 3 esquinas
+	//private String [][] queHay = new String[2][3];
+	private Vector queHay;
+	
+	
 	//TODO: Setup Sensors
 	private int accidente;
 	private int cortedecalle;
@@ -17,14 +24,28 @@ public class PatrulleroPerception extends Perception {
 	private int eventosocial;
 	private int plandebacheo;
 	
+	
+	
+	
  
 
-    public  PatrulleroPerception() {
+    
+	
+	
+	
+	public  PatrulleroPerception() {
+    	accidente = 2;
+    	cortedecalle = 3;
+    	congestion = 4;
+    	eventosocial = 5;
+    	plandebacheo = 6;
+    	
     	//TODO: Complete Method
     }
 
     public PatrulleroPerception(Agent agent, Environment environment) {
         super(agent, environment);
+        
     }
 
     /**
@@ -35,17 +56,64 @@ public class PatrulleroPerception extends Perception {
     	
     	//TODO: Complete Method
         
-        //Patrullero agent = (Patrullero) agentIn;
-        //Mapa environment = (Mapa) environmentIn;
-        //EstadoAmbiente environmentState =
-        //        environment.getEnvironmentState();
+        Patrullero agente = (Patrullero) agentIn;
+        Mapa mapa = (Mapa) environmentIn;
+        EstadoAmbiente estAmbiente  = mapa.getEnvironmentState();
        
         
+        int posPat = estAmbiente.getPosPatrullero();
     }
     
-    @Override
+    
+    public int getAccidente() {
+		return accidente;
+	}
+
+	public void setAccidente(int accidente) {
+		this.accidente = accidente;
+	}
+
+	public int getCortedecalle() {
+		return cortedecalle;
+	}
+
+	public void setCortedecalle(int cortedecalle) {
+		this.cortedecalle = cortedecalle;
+	}
+
+	public int getCongestion() {
+		return congestion;
+	}
+
+	public void setCongestion(int congestion) {
+		this.congestion = congestion;
+	}
+
+	public int getEventosocial() {
+		return eventosocial;
+	}
+
+	public void setEventosocial(int eventosocial) {
+		this.eventosocial = eventosocial;
+	}
+
+	public int getPlandebacheo() {
+		return plandebacheo;
+	}
+
+	public void setPlandebacheo(int plandebacheo) {
+		this.plandebacheo = plandebacheo;
+	}
+
+	@Override
     public String toString() {
         StringBuffer str = new StringBuffer();
+        
+        str.append("Accidente: " + this.accidente);
+        str.append("Corte de Calle: " + this.cortedecalle);
+        str.append("Conjestión: " + this.congestion);
+        str.append("Evento Social: " + this.eventosocial);
+        str.append("Plan de bacheo: " + this.plandebacheo);
 
         //TODO: Complete Method
 
@@ -85,6 +153,14 @@ public class PatrulleroPerception extends Perception {
      public void setplandebacheo(int arg){
         this.plandebacheo = arg;
      }
+     
+     public Vector getQueHay() {
+ 		return queHay;
+ 	}
+
+ 	public void setQueHay(Vector queHay) {
+ 		this.queHay = queHay;
+ 	}
 	
    
 }

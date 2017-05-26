@@ -1,5 +1,7 @@
 package patrulla;
 
+import java.util.Vector;
+
 import frsf.cidisi.faia.agent.Action;
 import frsf.cidisi.faia.environment.Environment;
 
@@ -25,15 +27,55 @@ public class Mapa extends Environment {
      * @return A perception that will be given to the agent by the simulator.
      */
     @Override
+    
+    //CAMBIAR......
     public  PatrulleroPerception getPercept() {
-        // Create a new perception to return
-         PatrulleroPerception perception = new PatrulleroPerception();
+    	// Create a new perception to return
+    	//seria igual a initPerception() de PatrulleroPerception?
+//---------------ver-------------------------------------    	
+//    	Patrullero agente = (Patrullero) agentIn;
+//        Mapa mapa = (Mapa) environmentIn;
+//        EstadoAmbiente estAmbiente  = mapa.getEnvironmentState();
+//       
+//        int posPat = estAmbiente.getPosPatrullero();
+    	
+    	
+    	
+    	
+    	
+        
+    	PatrulleroPerception perception = new PatrulleroPerception();
 		int PosPatrullero =	this.getEnvironmentState().getPosPatrullero();
+		
+		String [][] matriz = this.getEnvironmentState().getMatriz(); 
+	    
+		Vector <String> vector = new Vector();
+		
+		int j = 0;
+		Integer pos;
+		while(j < matriz.length)  //VER length
+		{
+			if(matriz[PosPatrullero - 1][j] != "0")
+			{	
+				pos=new Integer (j +1 );
+				
+			
+				vector.add(pos.toString());
+				vector.add(matriz[PosPatrullero - 1][j]);
+			}
+			j++;
+		}
+	   
+		perception.setQueHay(vector);
         // Return the perception
         return perception;
     }
 
     
+
+
+
+
     @Override
 	public String toString() {
         return environmentState.toString();
@@ -43,10 +85,10 @@ public class Mapa extends Environment {
     @Override
 	public boolean agentFailed(Action actionReturned) {
 
-        EstadoAmbiente envState =
-                this.getEnvironmentState();
-
-        // TODO: Complete Method        
+        EstadoAmbiente envState = this.getEnvironmentState();
+        // SERIA COMO QUE POR ALGUNA RAZON NUESTRO PATRULLERO NO LLEGUE?
+        // MEPA QUE QUEDA VACIO ESTE METODO.
+                
 
         return false;
     }

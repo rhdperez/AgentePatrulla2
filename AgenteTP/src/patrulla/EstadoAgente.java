@@ -65,8 +65,15 @@ public class EstadoAgente extends SearchBasedAgentState {
      */
     //@Override
     public void updateState(Perception p) {
+        PatrulleroPerception patPercepcion = (PatrulleroPerception) p;
+        System.out.print(patPercepcion.getQueHay().size()+"lololololo");
+        for(int i=0; i<5/*(patPercepcion.getQueHay().size())*/-1; i= i+2)
+        {
         
-        //TODO: Complete Method
+        	matriz [this.PosPatrullero - 1][ (Integer.parseInt((String) patPercepcion.getQueHay().get(i)))] = (String) patPercepcion.getQueHay().get(i+1);
+           
+        }
+        	
     }
 
     /**
