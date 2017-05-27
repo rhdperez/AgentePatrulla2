@@ -39,11 +39,6 @@ public class Mapa extends Environment {
 //       
 //        int posPat = estAmbiente.getPosPatrullero();
     	
-    	
-    	
-    	
-    	
-        
     	PatrulleroPerception perception = new PatrulleroPerception();
 		int PosPatrullero =	this.getEnvironmentState().getPosPatrullero();
 		
@@ -53,19 +48,18 @@ public class Mapa extends Environment {
 		
 		int j = 0;
 		Integer pos;
-		while(j < matriz.length)  //VER length
+		
+		while(j < matriz.length)
 		{
-			if(matriz[PosPatrullero - 1][j] != "0")
+			if(matriz[PosPatrullero - 1][j].compareTo("0") != 0)
 			{	
-				pos=new Integer (j +1 );
-				
-			
+				pos = new Integer (j +1 );
 				vector.add(pos.toString());
 				vector.add(matriz[PosPatrullero - 1][j]);
 			}
 			j++;
 		}
-	   
+		
 		perception.setQueHay(vector);
         // Return the perception
         return perception;

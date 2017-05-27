@@ -13,26 +13,12 @@ public class EstadoAmbiente extends EnvironmentState {
     //private Other PosIncidente;
     //private Other PosPatrullero;
     //private Other CortesParciales;
-    private int DestPosibles;
+    
     private int PosPatrullero;
     private int PosObjetivo;
     private String [][] matriz;
 	
-    public int getPosPatrullero() {
-		return PosPatrullero;
-	}
-
-	public void setPosPatrullero(int posPatrullero) {
-		PosPatrullero = posPatrullero;
-	}
-
-	public int getPosObjetivo() {
-		return PosObjetivo;
-	}
-
-	public void setPosObjetivo(int posObjetivo) {
-		PosObjetivo = posObjetivo;
-	}
+   
 
 	public String[][] getMatriz() {
 		return matriz;
@@ -82,12 +68,26 @@ public class EstadoAmbiente extends EnvironmentState {
      */
     @Override
     public String toString() {
-        String str = "";
-
-        //TODO: Complete Method
-
+        String str = "El patrullero está en la posición: " + this.getPosPatrullero();
+        
         return str;
     }
+    
+    public int getPosPatrullero() {
+		return PosPatrullero;
+	}
+
+	public void setPosPatrullero(int posPatrullero) {
+		PosPatrullero = posPatrullero;
+	}
+
+	public int getPosObjetivo() {
+		return PosObjetivo;
+	}
+
+	public void setPosObjetivo(int posObjetivo) {
+		PosObjetivo = posObjetivo;
+	}
 
 	//TODO: Complete this section with agent-specific methods
     // The following methods are agent-specific:
@@ -116,13 +116,6 @@ public class EstadoAmbiente extends EnvironmentState {
 //     public void setCortesParciales(Other arg){
 //        CortesParciales = arg;
 //     }
-     public int getDestPosibles(){
-        return DestPosibles;
-     }
-     public void setDestPosibles(int arg){
-        DestPosibles = arg;
-     }
-	
-
+ 
 }
 

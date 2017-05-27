@@ -9,15 +9,7 @@ import frsf.cidisi.faia.agent.search.SearchBasedAgentState;
  */
 public class EstadoAgente extends SearchBasedAgentState {
 	
-	public int getPosObjetivo() {
-		return PosObjetivo;
-	}
-
-
-
-	public void setPosObjetivo(int posObjetivo) {
-		PosObjetivo = posObjetivo;
-	}
+	
 	//TODO: Setup Variables
     //private Other PosPatrullero;
     //private Other EsquinaIntersecciones;
@@ -44,6 +36,14 @@ public class EstadoAgente extends SearchBasedAgentState {
         
         this.initState();
     }
+    
+    public EstadoAgente(int PosPatrullero, int PosObjetivo, String[][] matriz)
+    {
+    	this.PosPatrullero = PosPatrullero;
+    	this.PosObjetivo = PosObjetivo;
+    	this.matriz = matriz;
+    	EsquinasRecorridas = 0;
+    }
 
     
 
@@ -51,23 +51,32 @@ public class EstadoAgente extends SearchBasedAgentState {
      * This method clones the state of the agent. It's used in the search
      * process, when creating the search tree.
      */
-    //@Override
+    @Override
     public SearchBasedAgentState clone() {
         
-		//TODO: Complete Method
-		
-        return null;
+    	String [][] mat = new String[173][173];
+    	for (int i = 0; i < matriz.length; i++)
+    	{
+			for(int j = 0; j < matriz.length; j++) 
+			{
+				mat[i][j] = matriz[i][j];
+			}
+    	}
+    	
+    	EstadoAgente estadoAgente = new EstadoAgente(this.getPosPatrullero(), this.getPosObjetivo(), mat);
+    	
+		return estadoAgente;
     }
 
     /**
      * This method is used to update the Agent State when a Perception is
      * received by the Simulator.
      */
-    //@Override
+    @Override
     public void updateState(Perception p) {
         PatrulleroPerception patPercepcion = (PatrulleroPerception) p;
-        System.out.print(patPercepcion.getQueHay().size()+"lololololo");
-        for(int i=0; i<5/*(patPercepcion.getQueHay().size())*/-1; i= i+2)
+        
+        for(int i=0; i < patPercepcion.getQueHay().size()-1; i= i+2)
         {
         
         	matriz [this.PosPatrullero - 1][ (Integer.parseInt((String) patPercepcion.getQueHay().get(i)))] = (String) patPercepcion.getQueHay().get(i+1);
@@ -79,12 +88,12 @@ public class EstadoAgente extends SearchBasedAgentState {
     /**
      * This method is optional, and sets the initial state of the agent.
      */
-    //@Override
+    @Override
     public void initState() {
     
     //Matriz destinos
     matriz= new String[173][173];	
-    matriz = leerDestinos.getMatriz("C:/Users/RHDP/Desktop/matriz_pablo/matrizDestinosAgente.txt");
+    matriz = leerDestinos.getMatriz("C:/Users/RHDP/Desktop/matriz_pablo/matrizDestinosAmbiente.txt");
     
     //Pos Objetivo esquina 173
     PosObjetivo = 173;
@@ -112,12 +121,10 @@ public class EstadoAgente extends SearchBasedAgentState {
 	/**
      * This method returns the String representation of the agent state.
      */
-    //@Override
+    
     public String toString() {
-        String str = "";
-
-        //TODO: Complete Method
-
+    	String str = "";
+    	str = str + PosPatrullero;
         return str;
     }
 
@@ -125,14 +132,17 @@ public class EstadoAgente extends SearchBasedAgentState {
      * This method is used in the search process to verify if the node already
      * exists in the actual search.
      */
-    //@Override
-    public boolean equals(Object obj) {
-       
-       //TODO: Complete Method
+    @Override
+    public boolean equals(Object obj)
+    {
+    	if (!(obj instanceof EstadoAgente))
+    		return false;
+    	
+    	int position = ((EstadoAgente) obj).getPosPatrullero();
         
-    	if (!(obj instanceof EstadoAgente)) {
-            return false;
-        }
+    	if(position != PosPatrullero)
+    		return false;
+             
     	return true;
        //return posPatrullero.equals(((EstadoAgente) obj).getPosPatrullero());
     }
@@ -176,6 +186,12 @@ public class EstadoAgente extends SearchBasedAgentState {
      public void setEsquinasRecorridas(int arg){
         EsquinasRecorridas = arg;
      }
-	
+     public int getPosObjetivo() {
+ 		return PosObjetivo;
+ 	}
+
+ 	public void setPosObjetivo(int posObjetivo) {
+ 		PosObjetivo = posObjetivo;
+ 	}
 }
 

@@ -15,8 +15,8 @@ public class CostFunction implements IStepCostFunction {
     @Override
     public double calculateCost(NTree node) {
         
-        //TODO: Complete Method
-        
-        return 0;
+    	
+               
+        return 1;
     }
 }

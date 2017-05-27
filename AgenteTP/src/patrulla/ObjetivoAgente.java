@@ -5,7 +5,7 @@ import frsf.cidisi.faia.state.AgentState;
 
 public class ObjetivoAgente extends GoalTest {
 
-    
+	@Override
     public boolean isGoalState (AgentState agentState) {
     
     	int posPatrullero = ((EstadoAgente) agentState).getPosPatrullero();
